@@ -1,0 +1,524 @@
+<%- include('partials/head') -%>
+<%- include('partials/header') -%>
+<%- include('partials/sidebar') -%>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Steps <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>145</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Revenue Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Weight <span>| This Month</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>$3,264</h6>
+                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card customers-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Body Fat <span>| This Year</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>1244</h6>
+                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div><!-- End Customers Card -->
+
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Average Heart Rate <span>/Today</span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: '2020',
+                          data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                          name: '2021',
+                          data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                          name: '2022',
+                          data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'datetime',
+                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy HH:mm'
+                          },
+                        }
+                      }).render();
+                    });
+                  </script>
+                  <!-- End Line Chart -->
+
+                </div>
+
+              </div>
+            </div><!-- End Reports -->
+
+            <!-- Patient Summary -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Patient Summary</h5>
+                  <table class="table table-bordered table-hover mb-3">
+                    <!-- Basic -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Basic</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Full Name: </th>
+                        <td><%= user.firstName %> <%= user.lastName %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Date of Birth: </th>
+                        <!-- divide by milliseconds in a year -->
+                        <td><%= user.dob.toLocaleDateString('en-CA') %> (Age: <%= (Math.floor((new Date() - user.dob) / 31556952000)) %>) </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Gender: </th>
+                        <td><%= user.gender %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Race: </th>
+                        <td><%= user.race %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Occupation: </th>
+                        <td><%= user.occupation %></td>
+                      </tr>
+                    </tbody><!-- End Basic -->
+                    <!-- History -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">History</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Current Medication: </th>
+                        <td>Vitamin D, Calcium, Aspirin, Claritin</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Allergies: </th>
+                        <td>Peanuts, Wheat, Dust, Cats, Cockroaches</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Family History: </th>
+                        <td>High Blood Pressure, High Cholesterol, Diabetes, Asthma</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Siblings: </th>
+                        <td>Brother (25), Sister (24)</td>
+                      </tr>
+                    </tbody><!-- End History -->
+                    <!-- Lifestyle -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Lifestyle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Alcohol: </th>
+                        <td><%= user.alcohol %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Cigarettes: </th>
+                        <td><%= user.cigarettes %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Marijuana: </th>
+                        <td><%= user.marijuana %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Exercise: </th>
+                        <td><%= user.exercise %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Sexually Active: </th>
+                        <td><%= user.sex %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pregnant: </th>
+                        <td><%= user.pregnant %></td>
+                      </tr>
+                    </tbody><!-- End Lifestyle -->
+                    <!-- Contact Info -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Contact Info</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Email: </th>
+                        <td><%= user.email %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Phone Number: </th>
+                        <td><%= user.phone %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Mobile Number: </th>
+                        <td><%= user.mobile %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Address: </th>
+                        <td><%= user.address1 %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Address 2: </th>
+                        <td><%= user.address2 %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">City: </th>
+                        <td><%= user.city %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">State: </th>
+                        <td><%= user.state %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Zip: </th>
+                        <td><%= user.zip %></td>
+                      </tr>
+                    </tbody><!-- End Contact Info -->
+                    <!-- PCP -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">PCP</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">PCP Name: </th>
+                        <td>Dr. Orange</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">PCP Phone: </th>
+                        <td>(212) 123-1234</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">PCP Address: </th>
+                        <td>(212) 123-1234</td>
+                      </tr>
+                    </tbody><!-- End PCP -->
+                    <!-- Pharmacy -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Pharmacy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Pharmacy Name: </th>
+                        <td>Dr. Orange</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pharmacy Phone: </th>
+                        <td>(212) 123-1234</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pharmacy Address: </th>
+                        <td>(212) 123-1234</td>
+                      </tr>
+                    </tbody><!-- End Pharmacy -->
+                    <!-- Insurance -->
+                    <thead>
+                      <tr>
+                        <th scope="col" colspan="2">Insurance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Provider: </th>
+                        <td><%= user.insuranceName %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Member ID: </th>
+                        <td><%= user.insuranceId %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Group Number: </th>
+                        <td>12345</td>
+                      </tr>
+                    </tbody><!-- End Insurance -->
+                  </table>
+                </div>
+              </div>
+            </div><!-- Patient Summary -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Upcoming Appointments -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Upcoming Appointments <span>| Today</span></h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activity-label">2022 Dec 13 @ 1pm</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                    Eye Exam with <a href="#">Dr. Apple</a>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activity-label">2022 Dec 13 @ 3pm</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                    Wellness Visit with <a href="#">Dr. Blueberry</a>
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <div class="activity-label">2022 Dec 13 @ 4pm</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    MRI with <a href="#">Dr. Orange</a>
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- Upcoming Appointments -->
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="/img/news-1.jpg" alt="">
+                  <h4><a href="#">2022 Dec 12</a></h4>
+                  <p>Physical Exam - Dr. Chen</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="/img/news-2.jpg" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="/img/news-3.jpg" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="/img/news-4.jpg" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="/img/news-5.jpg" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+            </div>
+          </div><!-- End Recent Activity -->
+
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+  <%- include('partials/footer') -%>

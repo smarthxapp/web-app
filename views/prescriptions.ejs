@@ -1,0 +1,103 @@
+<%- include('partials/head') -%>
+<%- include('partials/header') -%>
+<%- include('partials/sidebar') -%>
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Prescriptions</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active">Prescriptions</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+
+      <!-- Prescriptions -->
+      <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+          <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+
+              <li><a class="dropdown-item" href="#">Today</a></li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">Prescriptions <span>| Today</span></h5>
+
+            <table class="table table-borderless table-hover datatable">
+              <thead>
+                <tr>
+                  <th scope="col">Prescription Number</th>
+                  <th scope="col">Drug Name</th>
+                  <th scope="col">Dosage</th>
+                  <th scope="col">Route Taken</th>
+                  <th scope="col">Frequency</th>
+                  <th scope="col">Prescribed By</th>
+                  <th scope="col">Amount Dispensed</th>
+                  <th scope="col">Refills Remaining</th>
+                  <th scope="col">Filled By</th>
+                  <th scope="col">Date Filled</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">#2457</th>
+                  <td><a href="#" class="text-primary">Gabapentin</a></td>
+                  <td>1 x 300mg</td>
+                  <td>Oral</td>
+                  <td>3 times a day</td>
+                  <td><a href="#" class="text-primary">Dr. Blueberry</a></td>
+                  <td>50 x 300mg</td>
+                  <td>2</td>
+                  <td><a href="#" class="text-primary">Walgreens</a></td>
+                  <td>2022 Dec 23</td>
+                </tr>
+                <tr>
+                  <th scope="row">#2857</th>
+                  <td><a href="#" class="text-primary">Aspirin</a></td>
+                  <td>1 x 300mg</td>
+                  <td>Oral</td>
+                  <td>Once a day</td>
+                  <td><a href="#" class="text-primary">Dr. Blueberry</a></td>
+                  <td>50 x 300mg</td>
+                  <td>1</td>
+                  <td><a href="#" class="text-primary">Walgreens</a></td>
+                  <td>2022 Dec 23</td>
+                </tr>
+                <tr>
+                  <th scope="row">#2712</th>
+                  <td><a href="#" class="text-primary">Vitamin D</a></td>
+                  <td>1 x 400IU</td>
+                  <td>Oral</td>
+                  <td>Once a day</td>
+                  <td><a href="#" class="text-primary">Dr. Blueberry</a></td>
+                  <td>20 x 400IU</td>
+                  <td>0</td>
+                  <td><a href="#" class="text-primary">Walgreens</a></td>
+                  <td>2022 Dec 23</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div><!-- End Prescriptions -->
+
+    </div>
+  </div>
+</section>
+</main>
+<%- include('partials/footer') -%>

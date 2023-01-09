@@ -1,0 +1,258 @@
+<%- include('partials/head') -%>
+
+<header class="container">
+    <div class="text-center mt-5">
+    <h1 class=""><a href="/profile">Smart Hx</a></h1>
+    <h2>Personal health records at the tip of your fingers.</h2>
+    <h5>Say goodbye to filling out forms as a new patient. </h5>
+    </div>
+</header>
+
+<main class="container">
+    <div class="row justify-content-around mt-5">
+        <a href="/login" class="col-3 btn btn-primary"> Log In</a>
+        <a href="/signup" class="col-3 btn btn-primary"> Sign Up</a>
+    </div>
+    <div class="row justify-content-around mt-5">
+        <div>
+            <h3>Electronic Health Record (EHR) Features:</h3>
+            <ul>
+                <li>Records of your Allergies(User input), Family History(User input), Surgical History(User input), Immunizations, Checkup history, Hospitalizations, Current Medications will all be readily available.</li>
+                <li>Easily grant permission of your health records to your healthcare professionals by entering their 6-digit (hex) ID. Then, confirm physician's name and location is correct.</li>
+                <li>Make appointments seamlessly.</li>
+                <li>Receive notifications for appointment confirmations, appointment reminders (1 day before via sms, app, or email), prescriptions are ready, signing waivers, </li>
+                <li>Your healthcare professional sends consent forms (waivers) directly to your phone for you to sign.</li>
+            </ul>
+        </div>
+        <div class="row justify-content-around mt-5">
+            <h3>Features you can keep personal or share with your healthcare professional:</h3>
+            <ul>
+                <li>Health Journals to note abnormal symptoms with text, photos, and voice note (with transcribe) </li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="row justify-content-around mt-5">
+            <h3>To do:</h3>
+            <ul>
+                <li>children accounts, account name on top with big letters and DOB small letters</li>
+                <li>Another idea: generate qr for hcp to scan so they can ask permission so theres less human error. hcp should request and patient should manage. maybe implement expiry timer so hcp that havent accessed in a while lose access. BUT pcp has no time to prepare, so I prefer granting patient access after appointment is made.</li>
+                <li>confirm HCP NPI numbers and validity with API: https://npiregistry.cms.hhs.gov/api-page</li>
+            </ul>
+        </div>
+
+        <div class="row justify-content-around mt-5">
+            <h3>Pricing</h3>
+            <ul>
+                <li>Free tier: basic functionality</li>
+                <li><strong>Smart Hx Silver members</strong>: Steps tracker and heart rate monitor with charts. 3hr:10m, 1d:1h, 1y:1d, day of the week averages.</li>
+                <li><strong>Smart Hx Gold members</strong>: Steps tracker and heart rate monitor with charts. Silver plus 7d:10m, 7d:1hr </li>
+                <li>$200 per month per HCP</li>
+            </ul>
+        </div>
+
+
+        <div class="patient">
+            <h3>Patient dashboard:</h3>
+            <ul>
+                <li>Easily switch between your family's accounts .../patient/u/0/#summary</li>
+                <li>View HCP/PT activity .../patient/u/0/#activity</li>
+                <li>Manage payments .../patient/u/0/#payments</li>
+                <li>View prescriptions .../patient/u/0/#prescriptions</li>
+                <li>View diagnostic lab reports directly from your app .../patient/u/0/#labreports</li>
+                <li>View EKG charts .../patient/u/0/#ekg</li>
+                <li>View map/list of doctors that has Smart Hx and accepts your insurance. .../patient/u/0/#findhcp</li>
+                <li>Book/Manage appointments that directly syncs with your Google calendar .../patient/u/0/#appointments</li>
+                <li>View phonebook to easily call your HCP, get directions, or share contact info of your HCP to your family and friends .../patient/u/0/#myhcp</li>
+                <li>Health journal to note abnormal symptoms with text, photos, and voice note (with transcribe) .../patient/u/0/#journal</li>
+                <li>Grant permissions to your HCP .../patient/u/0/#permissions</li>
+                <li>Receive notifications for appointment confirmations, appointment reminders (1 day before via sms, app, or email), prescriptions are ready, signing waivers,  .../patient/u/0/#notifications</li>
+            </ul>
+
+            <h3>#Summary Page</h3>
+            <ul>
+                //patient model
+                <li>Name: </li>
+                <li>Age: </li>
+                <li>Sex: </li>
+                <li>Race: </li>
+            </ul>
+            <h6>Contact Info:</h6>
+            <ul>
+                <li>Email address: </li>
+                <li>Home number: </li>
+                <li>Mobile number: </li>
+                <li>Address1: </li>
+                <li>Address2: </li>
+                <li>City: </li>
+                <li>State: </li>
+                <li>Zip Code: </li>
+            </ul>
+            <p><strong>Allergies</strong>: Array, of, allergies, None, N/A</p>
+            <p><strong>Smoke cigarettes?</strong>: Never, Sometimes, Often, N/A</p>
+            <p><strong>Smoke marijuana?</strong>: Never, Sometimes, Often, N/A</p>
+            <p><strong>Drink alcohol?</strong>: Never, Sometimes, Often, N/A</p>
+            <p><strong>(Optional) Other recreational drugs</strong>: Array (visible if true)</p>
+
+            <h6>Recent immunizations</h6>
+            <ul>
+                <li>${immunization.date} immunization[immunization.length - 1]</li>
+                <li>${immunization.date} immunization[immunization.length - 2]</li>
+                <li>${immunization.date} immunization[immunization.length - 3]</li>
+                <li>2022 Dec 01 Covid Bivalent Booster</li>
+                <li>2022 Oct 08 Flu shot</li>
+                <li>2021 Dec 12 Tetanus shot</li>
+            </ul>
+            
+            <h6>Upcoming appointments</h6>
+            <ul>
+                //appointment model: date, time, doctor: string, userID: string
+                <li>2022 Dec 01 1pm Doctor ABC</li>
+                <li>2022 Dec 08 1pm Doctor ABC</li>
+                <li>2022 Dec 12 2pm Doctor DEF</li>
+            </ul>
+
+            <h6>Recent appointments</h6>
+            <ul>
+                <li>${activity.date} activity[activity.length - 1]</li>
+                <li>${activity.date} activity[activity.length - 2]</li>
+                <li>${activity.date} activity[activity.length - 3]</li>
+            </ul>
+            <h6>Medication/Pharmacy (dashboard)</h6>
+            <ul>
+                <li>Calcium: Ready to be picked up at <a href="#">${Pharmacy}</a></li>  //call, maps, share
+                <li>Vitamin D: Ready to be picked up</li>
+            </ul>
+
+            <h3>#Prescriptions/Rx (page)</h3>
+            <ul>
+                //medicine model: drug: string, directions: string, status: (ready to be picked up, patient received, cancelled), userID: string
+                <li>Calcium 100 mg per day (1 x 100mg tablet)</li>
+                <li>Vitamin D 100 mg per day (1 x 100mg capsule)</li>
+            </ul>
+
+            <h3>#Activity (page)</h3>
+            <ul>
+                //activity model: date: yyyy, directions: string, status: (ready to be picked up, patient received, cancelled), userID: string
+                <li>${date} ${hcp} ${procedure}</li>
+                <li>2022 Dec 07 Doctor Tim Annual checkup</li>
+            </ul>
+
+            <h3>#Health Journal - (optional to share with doctor)</h3>
+            <ul>
+                <li>${DateStart} ${area affected} ${note}</li>
+                <li>${DateStart} ${area affected} coughing green phlegm</li>
+                <li>${DateStart} ${area affected} abnormal heart rate</li>
+                <li>${DateStart} ${area affected} dizziness</li>
+                <li>${DateStart} ${area affected} eczema</li>
+                <li>${DateStart} ${area affected} constipation</li>
+            </ul>
+
+            <h3>#Permissions - Allow / Deny toggle (when clicking allow, confirmation alert for patient 'Press confirm to allow ${hcp.name} to view your health records'. after confirmation, sends notification to hcp of new patient info received) </h3>
+            <ul>
+                <li>${hcp.name} ${hcp.title} ${hcp.address} ${hcp.phone}</li>
+                <li>${hcp.name} Follow up on high cholesterol</li>
+                <li>${hcp.name} Follow up on EKG bradycardia</li>
+                <li>${hcp.name} Follow up on Vitamin D deficiency</li>
+                <li>${hcp.name} Follow up on 2cm melanoma on right chest</li>
+            </ul>
+
+            <h3>#Notifications (Patient)</h3>
+            <h4>${date}</h4>
+            <ul>
+                <li>${Time} ${Doctor} ${notification.description}</li>
+                <li>${Time} ${Doctor} You have an appointment tomorrow at 3PM!</li>
+                <li>${Time} ${Doctor} You have prescriptions ready to pick up!</li>
+            </ul>
+        </div>
+
+        <div class="hcp">
+            <div class="row justify-content-around mt-5">
+                <h3>HCP dashboard:</h3>
+                <ul>
+                    <li>Schedule .../hcp/u/0/#schedule</li>
+                    <li>Easily switch between your HCP accounts .../hcp/u/0/#summary</li>
+                    <li>View HCP/PT activity .../hcp/u/0/#activity</li>
+                    <li>Manage payments .../hcp/u/0/#payments</li>
+                    <li>View prescriptions .../hcp/u/0/#prescriptions</li>
+                    <li>View diagnostic lab reports directly from your app .../hcp/u/0/#labreports</li>
+                    <li>View EKG charts .../hcp/u/0/#ekg</li>
+                    <li>View map/list of doctors that has Smart Hx and accepts your insurance. .../hcp/u/0/#findhcp</li>
+                    <li>Book/Manage appointments that directly syncs with your Google calendar .../hcp/u/0/#appointments</li>
+                    <li>List of patients .../hcp/u/0/#patients</li>
+                    <li>HCP's notes to note what to follow up on with text, photos, and voice note (with transcribe) .../hcp/u/0/#journal</li>
+                    <li>On PT page: can send referral to another doctor, send Rx to pharmacists in SureScripts network</li>
+                </ul>
+            </div>
+
+            <h3>#${hcp}'s Schedule ${date}</h3>
+            //daily patients counter container
+
+            <div class="container">
+                <div class="row justify-content-around my-5">
+                    <div class="col-3 btn btn-primary">
+                        PTs Scheduled </br>
+                        ${scheduled} //REACT
+                    </div>
+                    <div class="col-3 btn btn-primary">
+                        PTs waiting </br>
+                        ${patients waiting} //REACT
+                    </div>
+                    <div class="col-3 btn btn-primary">
+                        PTs Finished </br>
+                        ${patients finished} //REACT
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                // appointment model: date, time, patient_id, doctor_id
+                <li>${appointment.time} ${patient.name} ${appointment.status}</li>
+                <li>${appointment.time} ${patient.name} 13 mins late (danger)</li>
+                <li>${appointment.time} ${patient.name} appt in 17 mins</li>
+                <li>${appointment.time} ${patient.name} appt in 47 mins</li>
+                <li>${appointment.time} ${patient.name} appt in 1+ hr</li>
+            </ul>
+
+            <h3>#HCP's notes - for things not in diagnostics report (optional to share with patient)</h3>
+            <ul>
+                <li>${Date} ${Doctor} ${note}</li>
+                <li>${Date} ${Doctor} Follow up on high cholesterol</li>
+                <li>${Date} ${Doctor} Follow up on EKG bradycardia</li>
+                <li>${Date} ${Doctor} Follow up on Vitamin D deficiency</li>
+                <li>${Date} ${Doctor} Follow up on 2cm melanoma on right chest</li>
+            </ul>
+
+            <h3>#Patients - List of confirmed patients. List of Pending patients: Accept(success)/Deny(danger)</h3>
+            //REACT search bar
+            <ul>
+                <li>${patient.name}</li>
+                <li>${patient.name}</li>
+                <li>${patient.name}</li>
+                <li>${patient.name}</li>
+            </ul>
+
+            <h3>#Notifications (HCP)</h3>
+            <h4>${date}</h4>
+            <ul>
+                <li>${Time} ${PT} ${notification.description}</li>
+                <li>${Time} ${PT} New patient info received!</li>
+                <li>${Time} ${PT} Waiver signature received!</li>
+                <li>${Time} ${PT} Appointment confirmation received!</li>
+            </ul>
+            <h4>${date}</h4>
+            <ul>
+                <li>${Time} ${PT} ${notification.description}</li>
+                <li>${Time} ${PT} ${notification.description}</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="row justify-content-around mt-5">
+        <p><a href="#" class="col-3 btn btn-primary"> Click Here</a> If you are a healthcare professional/pharmacy who wants to accept Smart Hx patients</p>
+        <p><a href="#" class="col-3 btn btn-primary"> Click Here</a> To sign up for Smart Hx and keep track of your health records</p>
+    </div>
+</main>
+    
+<%- include('partials/no-sidebar') -%>
+<%- include('partials/footer') -%>

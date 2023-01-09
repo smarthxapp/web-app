@@ -1,0 +1,100 @@
+<%- include('partials/head') -%>
+<%- include('partials/header') -%>
+<%- include('partials/sidebar') -%>
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Health Journal</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active">Health Journal</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+<div class="container">
+  <div class="row mt-5">
+
+    <div class="col-sm-12 col-md-6">
+      <div>
+        <table class="table table-sm table-hover table-borderless datatable">
+          <thead>
+            <tr>
+              <th scope="col">Favorited Notes</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<posts.length; i++) {%>
+            <% if (posts[i].favorite == true) { %>
+              <tr>
+                <th scope="row"><%= posts[i].createdAt.toLocaleDateString('en-US')%>, <%= posts[i].createdAt.toLocaleTimeString('en-US')%></th>
+                <td>
+                  <a href="/post/<%= posts[i]._id%>"><%= posts[i].title%></a>
+                </td>
+              </tr>
+            <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <table class="table table-sm table-hover table-borderless datatable">
+          <thead>
+            <tr>
+              <th scope="col">All Notes</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<posts.length; i++) {%>
+            <tr>
+              <!-- <th scope="row"><%= posts[i].createdAt%></th> -->
+              <!-- <th scope="row"><%= posts[i].createdAt.getDate()+"."+posts[i].createdAt.getMonth()+"."+posts[i].createdAt.getFullYear()%></th> -->
+              <th scope="row"><%= posts[i].createdAt.toLocaleDateString('en-US')%>, <%= posts[i].createdAt.toLocaleTimeString('en-US')%></th>
+              <td>
+                <a href="/post/<%= posts[i]._id%>"><%= posts[i].title%></a>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+      <div class="col-sm-12 col-md-6">
+        <div>
+          <a href="#" class="col-3 btn btn-primary">Create Post</a>
+          <a href="#" class="col-3 btn btn-primary">Edit Post</a>
+          <a href="#" class="col-3 btn btn-primary">Delete Post</a>
+        </div>
+        <div class="mt-5">
+          <h2>Add a post</h2>
+          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Image</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</main>
+
+<%- include('partials/footer') -%>
